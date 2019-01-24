@@ -22,11 +22,14 @@ sudo docker run -itd \
 i=1
 while [ $i -lt $N ]
 do
+	PORT=$((50010 + $i))
 	sudo docker rm -f hadoop-slave$i &> /dev/null
 	echo "start hadoop-slave$i container..."
 	sudo docker run -itd \
 	                --net=hadoop \
 					-v /data/hdfs/datanode$i:/root/hdfs/datanode \
+					-v ./datanode/hdfs-site-$i.xml:/usr/local/hadoop/etc/hadoop/hdfs-site.xml
+					-p $PORT:$PORT \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
 	                reg.querycap.com/cloudchain/hadoop:1.0
