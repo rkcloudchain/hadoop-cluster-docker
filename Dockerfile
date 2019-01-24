@@ -2,6 +2,13 @@ FROM ubuntu:16.04
 
 WORKDIR /root
 
+RUN echo "deb http://mirrors.tencentyun.com/ubuntu/ xenial main restricted universe multiverse" > /etc/apt/sources.list && \
+    echo "deb http://mirrors.tencentyun.com/ubuntu/ xenial-security main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb http://mirrors.tencentyun.com/ubuntu/ xenial-updates main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.tencentyun.com/ubuntu/ xenial main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.tencentyun.com/ubuntu/ xenial-security main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.tencentyun.com/ubuntu/ xenial-updates main restricted universe multiverse" >> /etc/apt/sources.list
+
 # install openssh-server, openjdk and wget
 RUN apt-get update && apt-get install -y openssh-server default-jdk wget
 
