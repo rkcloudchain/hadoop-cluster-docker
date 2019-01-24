@@ -28,7 +28,7 @@ do
 	sudo docker run -itd \
 	                --net=hadoop \
 					-v /data/hdfs/datanode$i:/root/hdfs/datanode \
-					-v datanode/hdfs-site-$i.xml:/usr/local/hadoop/etc/hadoop/hdfs-site.xml \
+					-v $PWD/datanode/hdfs-site-$i.xml:/usr/local/hadoop/etc/hadoop/hdfs-site.xml \
 					-p $PORT:$PORT \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
