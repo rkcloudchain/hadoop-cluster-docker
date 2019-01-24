@@ -15,7 +15,7 @@ sudo docker run -itd \
 				-v /data/hdfs/namenode:/root/hdfs/namenode \
                 --name hadoop-master \
                 --hostname hadoop-master \
-                reg.querycap.com/cloudchain/hadoop:1.0 &> /dev/null
+                reg.querycap.com/cloudchain/hadoop:1.0
 
 
 # start hadoop slave container
@@ -30,7 +30,7 @@ do
 					-v /data/hdfs/datanode$i:/root/hdfs/datanode \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
-	                reg.querycap.com/cloudchain/hadoop:1.0 &> /dev/null
+	                reg.querycap.com/cloudchain/hadoop:1.0
 	i=$(( $i + 1 ))
 done 
 
