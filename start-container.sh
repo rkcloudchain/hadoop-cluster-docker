@@ -26,7 +26,6 @@ do
 	echo "start hadoop-slave$i container..."
 	sudo docker run -itd \
 	                --net=hadoop \
-					-p 50010:50010 \
 					-v /data/hdfs/datanode$i:/root/hdfs/datanode \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
