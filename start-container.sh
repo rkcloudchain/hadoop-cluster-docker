@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# the default node number is 3
-N=${1:-5}
+# the default node number is 5
+N=${1:-6}
 
 
 # start hadoop master container
@@ -12,7 +12,7 @@ sudo docker run -itd \
                 -p 50070:50070 \
 				-p 9000:9000 \
                 -p 8088:8088 \
-				-v /root/hdfs/namenode:/data/hdfs/namenode \
+				-v /data/hdfs/namenode:/root/hdfs/namenode \
                 --name hadoop-master \
                 --hostname hadoop-master \
                 reg.querycap.com/cloudchain/hadoop:1.0 &> /dev/null
@@ -26,7 +26,8 @@ do
 	echo "start hadoop-slave$i container..."
 	sudo docker run -itd \
 	                --net=hadoop \
-					-v /root/hdfs/datanode:/data/hdfs/datanode$i \
+					-p 50010:50010 \
+					-v /data/hdfs/datanode$i:/root/hdfs/datanode \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
 	                reg.querycap.com/cloudchain/hadoop:1.0 &> /dev/null
