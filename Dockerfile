@@ -49,7 +49,7 @@ RUN chmod +x ~/start-hadoop.sh && \
     chmod +x $HADOOP_HOME/sbin/start-yarn.sh 
 
 # format namenode
-RUN /usr/local/hadoop/bin/hdfs namenode -format
+# RUN /usr/local/hadoop/bin/hdfs namenode -format
 
 CMD [ "sh", "-c", "service ssh start; bash"]
 
