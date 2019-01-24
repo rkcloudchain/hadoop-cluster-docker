@@ -26,7 +26,7 @@ do
 	echo "start hadoop-slave$i container..."
 	sudo docker run -itd \
 	                --net=hadoop \
-					-v /root/hdfs/datanode:/data/hdfs/datanode$i
+					-v /root/hdfs/datanode:/data/hdfs/datanode$i \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
 	                reg.querycap.com/cloudchain/hadoop:1.0 &> /dev/null
